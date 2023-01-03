@@ -43,14 +43,20 @@ CREATE TABLE facturas (
 	id_factura INT NOT NULL AUTO_INCREMENT,
     id_cliente INT,
     id_pago INT,
-    id_producto INT,
     fecha DATE NOT NULL,
-    cantidad INT NOT NULL,
-    precio_venta FLOAT NOT NULL,
     total FLOAT NOT NULL,
     PRIMARY KEY (id_factura),
     FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente),
-    FOREIGN KEY (id_pago) REFERENCES forma_pago(id_pago),
-    FOREIGN KEY (id_producto) REFERENCES productos(id_producto)
+    FOREIGN KEY (id_pago) REFERENCES forma_pago(id_pago)
 );
 
+CREATE TABLE detalle (
+	id_detalle INT NOT NULL AUTO_INCREMENT,
+	id_factura INT,
+    id_producto INT,
+    cantidad INT NOT NULL,
+    precio_unitario FLOAT NOT NULL,
+    PRIMARY KEY (id_detalle),
+    FOREIGN KEY (id_factura) REFERENCES facturas(id_factura),
+    FOREIGN KEY (id_producto) REFERENCES productos(id_producto)
+);
