@@ -4,8 +4,8 @@ USE tienda_regalos;
 CREATE TABLE proveedor (
 	id_proveedor INT NOT NULL auto_increment,
     nombre_proveedor VARCHAR(50) NOT NULL,
-    tel_proveedor INT,
-    email VARCHAR(30),
+    tel_proveedor VARCHAR(12),
+    email VARCHAR(30) NOT NULL,
     direccion_proveedor VARCHAR(100) ,
     primary key (id_proveedor)
     );
