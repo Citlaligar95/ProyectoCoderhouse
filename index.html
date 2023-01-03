@@ -34,7 +34,7 @@ CREATE TABLE forma_pago (
 CREATE TABLE cliente (
 	id_cliente INT NOT NULL AUTO_INCREMENT,
     nombre_cliente VARCHAR (50) NOT NULL,
-    tel_cliente INT,
+    tel_cliente VARCHAR(12), 
     direccion_cliente VARCHAR(100),
     PRIMARY KEY (id_cliente)
 );
