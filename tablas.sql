@@ -44,7 +44,7 @@ CREATE TABLE facturas (
     id_cliente INT,
     id_pago INT,
     fecha DATE NOT NULL,
-    total FLOAT NOT NULL,
+    total FLOAT NULL,
     PRIMARY KEY (id_factura),
     FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente),
     FOREIGN KEY (id_pago) REFERENCES forma_pago(id_pago)
