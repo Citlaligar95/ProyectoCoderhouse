@@ -27,5 +27,22 @@ DELIMITER $$
 	END
     $$;
     
+    -- CREAR TRIGGER AFTER PARA SUMATORIA DEL TOTAL DE CADA FACTURA , CUANDO SE REGISTRE EL PRODUCTO EN LA PESTAÑA DETALLE
+USE tienda_regalos;
+
+DELIMITER $$
+    CREATE TRIGGER tr_suma_factura
+    AFTER INSERT ON detalle
+    FOR EACH ROW
+    BEGIN
+		DECLARE idFact int default 0;
+        DECLARE cant_total int default 0;
+        set idFact=NEW.id_factura;
+        set cant_total= (SELECT SUM(precio_unitario) FROM detalle WHERE id_factura=idFact);
+        
+        UPDATE facturas set total= cant_total WHERE id_factura=idFact;
+	END
+    $$;
+    
 
     
